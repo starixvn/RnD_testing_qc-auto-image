@@ -28,7 +28,8 @@ docker-build:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     # - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
-    - docker build --pull dslim/docker-slim
+    # - docker pull dslim/docker-slim
+    - docker build -t docker-slim:latest .
     - docker-slim build --http-probe=false --target "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" --continue-after 1
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   when: manual
