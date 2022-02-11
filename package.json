@@ -18,48 +18,19 @@
         "chai-http": "4.3.0",
         "cross-var": "1.1.0",
         "google-spreadsheet": "3.1.15",
-        "jsonpath": "^1.1.1",
+        "jsonpath": "1.1.1",
         "mocha": "9.1.0",
         "mochawesome": "6.2.2",
         "mongodb": "4.1.0",
         "ocrad.js": "0.0.1",
         "pixelmatch": "5.2.1",
-        "playwright": "^1.16.3",
+        "playwright": "1.18.0",
         "sharp": "0.27.2",
         "tesseract.js": "2.1.4",
         "ua-parser-js": "0.7.24",
         "webpack": "5.51.1",
         "websocket": "1.0.33",
         "websocket-as-promised": "2.0.1"
-    },
-    "@comment scripts": {
-        "CI_SelGame": [
-            "Run specific game on CI"
-        ],
-        "Win_SelGame": [
-            "Run main test suites of specific game on win OS"
-        ],
-        "Win_SelGameSub": [
-            "Run sub test suites (Database, API, Manage page) of specific game on win OS"
-        ],
-        "full": [
-            "Run all test case in main test suites"
-        ],
-        "smoke": [
-            "Run only smoke test cases in main test suites"
-        ],
-        "p_full": [
-            "Parallel run all test case in main test suites"
-        ],
-        "p_smoke": [
-            "Parrallel run only smoke test cases in main test suites"
-        ],
-        "exportStatus": [
-            "Sync the lastest execution result to google sheet"
-        ],
-        "sendResultToTelegram": [
-            "Send the latest execution result to user via Telegram"
-        ]
     },
     "scripts": {
         "CI_SelGame_Smoke": "cross-var mocha --timeout 0 Games/$npm_config_game/*_Test.js -r @babel/register --file ./Setup.js  --fgrep Smoke_ --file ./Teardown.js  --reporter mochawesome --reporter-options reportDir=Report/$npm_config_cf_lang ",
