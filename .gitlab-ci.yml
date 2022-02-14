@@ -27,8 +27,9 @@ docker-build:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
-    - docker-slim build --http-probe=false --target "$CI_REGISTRY_IMAGE" --continue-after 1
+    - docker-slim build --http-probe=false --target git3.nexdev.net:5050/rnd/testing/qc-auto-image:master --tag master --continue-after 1
+    # - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    # - docker-slim build --http-probe=false --target "$CI_REGISTRY_IMAGE" --continue-after 1
     # - docker tag $CI_REGISTRY_IMAGE:$DEPLOY_ENV-$CI_REGISTRY_IMAGE_VERSION.slim $CI_REGISTRY_IMAGE:master || docker tag $CI_REGISTRY_IMAGE:$CI_REGISTRY_IMAGE_VERSION.slim $CI_REGISTRY_IMAGE:master
     - docker push $CI_REGISTRY_IMAGE:master
   when: manual
