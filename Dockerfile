@@ -53,4 +53,6 @@ RUN apt-get update \
 # Install node_modules
 COPY package.json $home/package.json
 RUN npm install
+RUN npx browserslist@latest --update-db
+RUN npm audit fix
 
