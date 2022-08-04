@@ -6,7 +6,7 @@ WORKDIR $home
 		   
 # Install node_modules
 RUN apt-get update
-RUN apt-get install build-essential
+RUN apt-get install build-essential -y
 COPY package.json $home/package.json
 RUN npm i cross-var --location=global
 RUN npm install
