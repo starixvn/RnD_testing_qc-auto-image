@@ -6,6 +6,6 @@ WORKDIR $home
 		   
 # Install node_modules
 COPY package.json $home/package.json
-RUN npm i cross-var -g
+RUN npm i cross-var --location=global
 RUN npm install
 RUN npx browserslist@latest --update-db
