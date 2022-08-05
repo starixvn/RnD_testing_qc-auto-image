@@ -11,6 +11,5 @@ RUN apt-get install build-essential -y
 COPY package.json $home/package.json
 RUN npm uninstall node --location=global 
 RUN npm install -g node@14 --force
-RUN npm i cross-var --location=global
 RUN npm install
 RUN npx browserslist@latest --update-db
