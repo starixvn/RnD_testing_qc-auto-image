@@ -6,10 +6,7 @@ WORKDIR $home
 		   
 # Install node_modules
 RUN apt-get update
-RUN apt-get install g++-11 -y
-RUN apt-get install build-essential -y
 COPY package.json $home/package.json
-RUN npm uninstall node --location=global 
-RUN npm install -g node@14 --force
 RUN npm install
+RUN npm init playwright@latest
 RUN npx browserslist@latest --update-db
