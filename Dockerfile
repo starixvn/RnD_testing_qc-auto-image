@@ -8,6 +8,6 @@ WORKDIR $home
 RUN apt-get update
 COPY package.json ./ 
 RUN npm install
-COPY ./** $home/
+COPY . /
 RUN npm init playwright@latest
 RUN npx browserslist@latest --update-db
