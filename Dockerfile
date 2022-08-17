@@ -6,8 +6,7 @@ WORKDIR $home
 		   
 # Install node_modules
 RUN apt-get update
-COPY package.json ./ 
+COPY package.json $home/package.json
 RUN npm install
-COPY . /
 RUN npm init playwright@latest
 RUN npx browserslist@latest --update-db
