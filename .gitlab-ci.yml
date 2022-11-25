@@ -2,22 +2,12 @@ docker-build:
   # Official docker image.
   image: registry.nexdev.net:5050/docker/docker-engine/docker:20.10.7
   stage: build
-  services:
-    - docker:dind
+  # services:
+  #   - docker:dind
   before_script:
     - docker login -u $DOCKER_REG_USERNAME -p $DOCKER_REG_PASSWORD $DOCKER_REG_URL
   script:
     # - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build --http-probe=false git3.nexdev.net:5050/rnd/testing/qc-auto-image:master --continue-after 1
-    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-    - docker build
-      --pull
-      -f $DOCKER_FILE_PATH/$DOCKER_FILE_NAME
-      --tag $CI_REGISTRY_IMAGE:$CI_REGISTRY_IMAGE_VERSION
-      --cache-from $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG $DOCKER_FILE_PATH
-    - docker push $CI_REGISTRY_IMAGE:$CI_REGISTRY_IMAGE_VERSION
-    - docker tag $CI_REGISTRY_IMAGE:$CI_REGISTRY_IMAGE_VERSION $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   tags:
