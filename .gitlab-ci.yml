@@ -1,6 +1,6 @@
 docker-build:
   # Official docker image.
-  image: registry.nexdev.net:5050/docker/docker-engine/docker:20.10.7
+  image: $DOCKER_REG_LOCAL_URL/base/docker:20.10.7-bash
   stage: build
   # services:
   #   - docker:dind
