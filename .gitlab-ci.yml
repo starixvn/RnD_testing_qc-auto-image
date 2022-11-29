@@ -9,8 +9,9 @@ docker-build:
     - docker login -u $DOCKER_REG_LOCAL_USERNAME -p $DOCKER_REG_LOCAL_PASSWORD $DOCKER_REG_LOCAL_URL
   script:
     # - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build --http-probe=false git3.nexdev.net:5050/rnd/testing/qc-auto-image:master --continue-after 1
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
-    - docker tag $CI_REGISTRY_IMAGE:latest
+    - docker build 
+      --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+      --tag $CI_REGISTRY_IMAGE:$CI_REGISTRY_IMAGE_VERSION
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   tags:
     - docker
